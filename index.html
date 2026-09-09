@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,minimum-scale=1" />
+  <meta name="theme-color" content="#100b1c" />
+  <meta name="description" content="塔罗直觉测试：跟随第一直觉，看看你的缘分磁场指向哪里。" />
+  <title>塔罗直觉测试｜未来另一半来自哪里？V4.7</title>
+  <link rel="stylesheet" href="./style.v4.7.css" />
+</head>
+<body>
+  <noscript>请启用 JavaScript 后重新打开测试。</noscript>
+  <main id="app">
+    <section class="screen active home-screen" id="homeScreen">
+      <div class="sky" aria-hidden="true"></div>
+      <div class="hero-wrap">
+        <div class="brand-row"><span>✦</span><b>THE LOVE ORACLE</b><span>✦</span></div>
+        <div class="oracle-emblem"><span class="orbit orbit-a"></span><span class="orbit orbit-b"></span><i>☾</i></div>
+        <div class="mini-tag">TAROT · INTUITION · DESTINATION · V4</div>
+        <h1>你的未来另一半<br><em>来自哪里？</em></h1>
+        <p class="subtitle">静下心 · 凭直觉选牌<br>三轮选牌，翻开属于你的缘分解读。</p>
+
+        <div class="mode-title">选择你想测试的范围</div>
+        <div class="mode-grid">
+          <button class="mode-card" data-mode="china">
+            <span class="mode-icon">中</span>
+            <span><strong>中国缘分版</strong></span>
+            <i>→</i>
+          </button>
+          <button class="mode-card" data-mode="world">
+            <span class="mode-icon">世</span>
+            <span><strong>世界缘分版</strong></span>
+            <i>→</i>
+          </button>
+        </div>
+
+        <button id="startBtn" class="primary" disabled><span>先选择测试版本</span><b>✦</b></button>
+        <p class="fineprint">图像直觉解读 · 仅供娱乐与自我探索。</p>
+      </div>
+    </section>
+
+
+    <section class="screen" id="accessScreen">
+      <div class="access-shell">
+        <div class="access-head"><span>✧</span><b>缘分坐标</b><em>THE LOVE ATLAS</em></div>
+        <div class="access-rule"></div>
+        <div class="access-card">
+          <p class="access-kicker">为这次相遇，开启一封邀请</p>
+          <h2>你的缘分入场券</h2>
+          <p class="access-desc">输入购买后收到的授权码，开始探索。</p>
+          <label for="accessCode">专属授权码</label>
+          <input id="accessCode" class="access-input" placeholder="YF-XXXX-XXXX-XXXX" maxlength="19" autocomplete="off" autocapitalize="characters" spellcheck="false" />
+          <button id="verifyCode" class="primary access-verify"><span>开启入场券</span><b>✦</b></button>
+          <div id="codeMsg" class="access-msg"></div>
+          <div id="usagePanel" class="usage-panel hidden">
+            <span>本设备剩余报告次数</span><strong id="remainingCount">10</strong><small>/ 10</small>
+          </div>
+          <p class="access-note">当前浏览器最多生成 10 份报告，中国版与世界版共用次数。请在同一浏览器继续；清理网站数据可能丢失本机使用记录。</p>
+          <button id="accessBackBtn" class="access-back">← 返回选择范围</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="introScreen">
+      <div class="intro-panel">
+        <div class="ritual-card">
+          <div class="corner c1">✦</div><div class="corner c2">✦</div><div class="corner c3">✦</div><div class="corner c4">✦</div>
+          <div class="ritual-orb"><span>III</span><i>☽</i></div>
+          <div class="mini-tag">BEFORE THE READING</div>
+          <h2>在心里，想一想你的缘分</h2>
+          <p>牌面即将展开。不猜寓意，选第一眼有感应的那张。每轮 <b>7 秒</b>；首次超时可继续，连续两轮超时结束本次测试。</p>
+          <div class="ritual-list">
+            <div><span>01</span><b>第一眼</b><small>感觉先于解释</small></div>
+            <div><span>02</span><b>只选一次</b><small>选择后不能返回</small></div>
+            <div><span>03</span><b>3 次选牌</b><small>最后翻开你的缘分地</small></div>
+          </div>
+          <button id="beginTest" class="primary shuffle-start"><span>开启星象</span><b>✦</b></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="quizScreen">
+      <div class="quiz-stage" id="quizStage">
+        <div class="table-veil"></div>
+        <div class="quiz-shell">
+          <div class="topbar v4-topbar">
+            <button id="quitBtn" class="icon-btn" aria-label="退出">×</button>
+            <div class="progress-wrap"><div id="progressBar"></div></div>
+            <div id="qCount" class="qcount">01 / 03</div>
+          </div>
+
+          <div class="v4-phase">
+            <span id="phaseText">FOLLOW YOUR FIRST FEELING</span>
+            <div class="timer-line"><i id="timerLine"></i></div>
+          </div>
+
+          <div class="fan-deck" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <div class="question-wrap v4-question">
+            <div id="questionEyebrow" class="mini-tag"></div>
+            <h2 id="questionTitle"></h2>
+            <div class="question-divider"><i></i><b>✦</b><i></i></div>
+            <p id="questionDesc"></p>
+          </div>
+
+          <div id="options" class="tarot-spread"></div>
+          <div id="choiceToast" class="choice-toast">✦ 一枚心灵印记，已落入星盘</div>
+          <p class="quiz-hint">凭直觉选一张 · 选好后不可返回</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="loadingScreen">
+      <div class="loading-wrap">
+        <div class="spread">
+          <div class="mini-card left">☼</div><div class="mini-card center">☾</div><div class="mini-card right">✦</div>
+        </div>
+        <div class="mini-tag">READING YOUR LOVE MAP</div>
+        <h2>正在读取你的缘分磁场</h2>
+        <p id="loadingText">正在展开你的缘分结果…</p>
+        <div class="loading-bar"><span></span></div>
+        <div class="loading-steps"><span class="on">直觉</span><i>·</i><span>性格磁场</span><i>·</i><span>地域气质</span><i>·</i><span>缘分落点</span></div>
+      </div>
+    </section>
+
+    <section class="screen" id="resultScreen">
+      <div class="result-shell">
+        <div class="result-card" id="resultCard">
+          <div class="result-frame"></div>
+          <div class="result-head">
+            <span>THE LOVE ORACLE</span><i>✦</i><span id="resultModeLabel">CHINA EDITION</span>
+          </div>
+          <div class="result-arc"><span class="arc-star s1">✦</span><span class="arc-star s2">·</span><span class="arc-star s3">✧</span><div class="result-moon">☾</div></div>
+          <div class="result-hero">
+            <div class="celestial-mark" aria-hidden="true"><span>✦</span><b>☾</b><i>✧</i></div>
+            <p class="result-kicker">你的未来缘分磁场最靠近</p>
+            <div id="resultArchetype" class="archetype-pill">THE STAR · 远行者</div>
+            <h1 id="resultName">广州</h1>
+            <p id="resultSub" class="result-sub"></p>
+            <div class="result-badges">
+              <span id="rarityBadge" class="rarity-badge">✦ 特别缘分</span>
+              <span id="editionBadge" class="edition-badge">CHINA LOVE MAP</span>
+            </div>
+            <div class="match"><span>缘分磁场匹配度</span><strong id="matchScore">92%</strong></div>
+          </div>
+          <div class="result-divider"><span>✦</span></div>
+
+          <section class="dimension-block">
+            <div class="section-title"><span>01</span><h3>你的缘分磁场</h3></div>
+            <div id="dimensionBars" class="dimension-bars"></div>
+          </section>
+
+          <section class="reading-block">
+            <div class="section-title"><span>02</span><h3>为什么会指向这里</h3></div>
+            <p id="whyText"></p>
+          </section>
+          <section class="reading-block">
+            <div class="section-title"><span>03</span><h3>你们可能如何相遇</h3></div>
+            <p id="meetText"></p>
+          </section>
+          <section class="reading-block">
+            <div class="section-title"><span>04</span><h3>Ta 给人的感觉</h3></div>
+            <p id="personText"></p>
+          </section>
+
+          <div class="keywords" id="keywords"></div>
+          <div class="top-title">你的隐藏缘分地</div>
+          <div class="top3-box">
+            <div><small>SECOND SIGNAL</small><strong id="top2"></strong><span id="top2Score"></span></div>
+            <div><small>THIRD SIGNAL</small><strong id="top3"></strong><span id="top3Score"></span></div>
+          </div>
+          <div class="result-note">“地点”是把你的直觉与不同地域的文化/生活气质做娱乐化映射，不代表真实未来事件。</div>
+          <div class="result-footer">TAROT INTUITION TEST · FOR ENTERTAINMENT ONLY</div>
+        </div>
+        <div class="result-actions">
+          <button id="posterBtn" class="primary"><span>生成可保存结果海报</span><b>↗</b></button>
+          <button id="quickShareBtn" class="secondary share-accent">分享结果</button>
+          <button id="copyResultBtn" class="secondary">复制结果文案</button>
+        </div>
+        <button id="retryBtn" class="secondary">同版本再测一次</button>
+        <button id="switchBtn" class="ghost-btn">切换中国版 / 世界版</button>
+      </div>
+    </section>
+
+    <section class="poster-modal hidden" id="posterModal">
+      <div class="poster-modal-inner">
+        <div class="poster-top"><span>长按或保存下方结果图</span><button id="closePoster">×</button></div>
+        <canvas id="posterCanvas" width="900" height="1200"></canvas>
+        <div class="poster-actions">
+          <a id="downloadPoster" class="primary poster-download" download="love-oracle-result.png">保存图片</a>
+          <button id="sharePoster" class="secondary">分享这张结果图</button>
+        </div>
+      </div>
+    </section>
+    <div id="timeoutDialog" class="oracle-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="timeoutTitle" aria-describedby="timeoutDesc">
+      <div class="oracle-pause"><div class="pause-sigil" aria-hidden="true">☾</div><p class="mini-tag">THE MOON IS WAITING</p><h2 id="timeoutTitle">请继续答题</h2><p id="timeoutDesc">先停一下，准备好后再选。<br>确认后请继续选择本题，不会为你自动作答。<br><small>若下一题也超时，本次测试将结束。</small></p><button id="resumeQuestion" class="primary">我准备好了 · 继续本题</button></div>
+    </div>
+    <section id="incompleteScreen" class="screen"><div class="incomplete-shell"><div class="pause-sigil" aria-hidden="true">☾</div><p class="mini-tag">THE READING RESTS</p><h2 id="incompleteTitle" tabindex="-1">很遗憾你没有完成本次测试</h2><p>连续两题未在时间内作答，<br>本次测试已结束。<br>有空的时候，可以再试一次。</p><p class="no-charge">本次未生成报告，不扣除报告次数。</p><button id="incompleteRestart" class="primary">重新开启仪式</button><button id="incompleteHome" class="secondary">返回入口</button></div></section>
+  </main>
+  <script src="./boot.v4.7.js"></script>
+  <script src="./config.v4.7.js"></script>
+  <script src="./intuition-content.v4.7.js"></script>
+
+  <script src="./app.v4.7.js"></script>
+</body>
+</html>
